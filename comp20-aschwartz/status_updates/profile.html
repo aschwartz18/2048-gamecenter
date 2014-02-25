@@ -7,11 +7,21 @@
     <script>
         function printMessages()
         {
+        	
+        	var thread = document.createTextNode("");
     	    var textMsg = document.getElementById("msg").value;
     	  	var cdate = new Date();
-    	  	var update = cdate.getMonth() + "/" + cdate.getDay() + "/" + cdate.getFullYear() + " " + cdate.getHours() + ":" + cdate.getMinutes() + " - " + textMsg;
-    	  	document.getElementById("status").innerHTML = update;
+    	  	var update = cdate.getMonth() + "/" + cdate.getDay() + "/" + cdate.getFullYear() + " " + cdate.getHours() + ":" + cdate.getMinutes() + " - " + textMsg + "fghsfgs";
+            document.write(update);
+    	  	var parent = thread.parentNode;
+         
+    	  	parent.insertBefore(update, thread);
+
+
+     	    document.getElementById("status").innerHTML = thread;
+
         }
+
     </script>
 </head>
 
