@@ -10,7 +10,7 @@
     	    var textMsg = document.getElementById("msg").value;
     	  	var cdate = new Date();
     	  	var update = cdate.getMonth() + "/" + cdate.getDay() + "/" + cdate.getFullYear() + " " + cdate.getHours() + ":" + cdate.getMinutes() + " - " + textMsg;
-    	  	document.write(update);
+    	  	document.getElementById("status").innerHTML = update;
         }
     </script>
 </head>
