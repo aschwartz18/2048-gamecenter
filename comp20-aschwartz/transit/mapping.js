@@ -11,7 +11,6 @@ var markers = [];
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	getMyLocation();
-	displayStations();
 }
 			
 function getMyLocation() {
@@ -35,6 +34,7 @@ function renderMap() {
 	title: "I am here at " + myLat + ", " + myLng + ""});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
+	displayStations();
 }
 
 
@@ -64,16 +64,8 @@ function displayStations(){
 
 		for (var m in markers) {
 			markers[m].setMap(map);
-			google.maps.event.addListener(markers[m], 'click', function() {
-				stopName = this.title;
-				mvcObj = this;
 
-				content = "<strong>" + stopName + "</strong>";
-				infowindow.setContent(content);
-				infowindow.open(map, mvcObj);
-			}
 		}
-
-	}
+}
 
 
