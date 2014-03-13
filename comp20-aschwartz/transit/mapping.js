@@ -20,7 +20,7 @@ function getMyLocation() {
             myLat = position.coords.latitude;
             myLng = position.coords.longitude;
             me = new google.maps.LatLng(myLat, myLng);
-            console.log(myLat + myLng);
+            console.log(myLat + "," + myLng);
             renderMap();
         });
     }
