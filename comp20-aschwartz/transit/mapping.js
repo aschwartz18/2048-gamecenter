@@ -51,12 +51,11 @@ function loadRodeo() {
     request.onreadystatechange = function(){
      	if (request.readyState == 4 && request.status == 200) {
             rodeoData = JSON.parse(request.responseText);
-            mapStations(rodeoData);
+            displayLine();
         }
     }
     request.open("GET", data_file, true);
     request.send();
-    displayLine();
 }
 
 function displayLine () {
