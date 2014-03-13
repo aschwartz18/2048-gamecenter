@@ -1,3 +1,4 @@
+var infowindow = new google.maps.InfoWindow();
 myLat = 0;
 myLng = 0;
 var request = new XMLHttpRequest();
@@ -5,12 +6,11 @@ var me;
 var myOptions = {zoom: 13, center: me, mapTypeId: google.maps.MapTypeId.ROADMAP};
 var map;
 var marker;
-var infowindow;
+
 
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	console.log("testing one");
-	infowindow = new google.maps.InfoWindow();
 	getMyLocation();
 }
 
