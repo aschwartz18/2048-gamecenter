@@ -9,6 +9,7 @@ var infowindow = new google.maps.InfoWindow();
 
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	console.log("testing one");
 	getMyLocation();
 }
 
