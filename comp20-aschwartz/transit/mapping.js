@@ -20,6 +20,7 @@ function getMyLocation() {
             myLng = position.coords.longitude;
             me = new google.maps.LatLng(myLat, myLng);
             console.log(myLat + "," + myLng);
+            parse();
             renderMap();
         });
     }
@@ -39,4 +40,8 @@ function renderMap() {
 	});
 }
 
+function parse(){
+	var line = JSON.parse('line');
+	console.log(line);
+}
 
