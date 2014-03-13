@@ -61,7 +61,19 @@ function displayStations(){
 			pt = new google.maps.LatLng(parsed['lat'], parsed['lng']);
 			markers.push(new google.maps.Marker({position: pt, title: parsed['id'], icon: marker}));
 		}
-	
-}
+
+		for (var m in markers) {
+			markers[m].setMap(map);
+			google.maps.event.addListener(markers[m], 'click', function() {
+				stopName = this.title;
+				mvcObj = this;
+
+				content = "<strong>" + stopName + "</strong>";
+				infowindow.setContent(content);
+				infowindow.open(map, mvcObj);
+			}
+		}
+
+	}
 
 
