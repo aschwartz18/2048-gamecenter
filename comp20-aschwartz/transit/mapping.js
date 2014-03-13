@@ -25,10 +25,6 @@ function getMyLocation() {
     }
 }
 
-function init() {
-	getMyLocation();
-}
-
 function renderMap() {
 	me = new google.maps.LatLng(myLat, myLng);
 	map.panTo(me);
