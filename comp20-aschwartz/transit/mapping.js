@@ -101,6 +101,18 @@ function displayLine () {
 		console.log("Ahhhhhhhhh bad data");
 	}
 
+	for (var m in markers) {
+		markers[m].setMap(map);
+		google.maps.event.addListener(markers[m], 'click', function() {
+			stopName = this.title;
+			mvcObj = this;
+			content = "<strong>" + stopName + "</strong>";
+			content += '<table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>';
+			infowindow.setContent(content);
+			infowindow.open(map, mvcObj);
+		
+		}
+	}
 }
 
 
