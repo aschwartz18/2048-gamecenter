@@ -1,18 +1,24 @@
+myLat = 0;
+myLng = 0;
+var request = new XMLHttpRequest();
+var me = new google.maps.LatLng(myLat, myLng);
+var myOptions = {zoom: 13, center: me, mapTypeId: google.maps.MapTypeId.ROADMAP};
+var map;
+var marker;
+var infowindow = new google.maps.InfoWindow();
+
+function init() {
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	getMyLocation();
+}
+
 function getMyLocation() {
-	lat = -99999;
-    lng = -99999;
-    elem = document.getElementById("loc");
     if (navigator.geolocation) {
-        // the navigator.geolocation object is supported on your browser
-        console.log("Call before navigator.geolocation");
         navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Got location");
-            lat = position.coords.latitude;
-            lng = position.coords.longitude;
-            elem.innerHTML = "<h1>You are in " + lat + ", " + lng + "</h1>";
+            myLat = position.coords.latitude;
+            myLng = position.coords.longitude;
+            renderMap();
         });
-        console.log("Made the call to get location");
-        elem.innerHTML = "<h1>You are in " + lat + ", " + lng + "</h1>";
     }
     else {
         alert("Geolocation is not supported by your web browser.  What a shame!");
@@ -22,4 +28,16 @@ function getMyLocation() {
 function init() {
 	getMyLocation();
 }
+
+function renderMap() {
+	me = new google.maps.LatLng(myLat, myLng);
+	map.panTo(me);
+	marker = new google.maps.Marker({position: me, title: "I am here at " + myLat + ", " + myLng + ""});
+	marker.setMap(map);
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.setContent(marker.title);
+		infowindow.open(map, marker);
+	});
+}
+
 
