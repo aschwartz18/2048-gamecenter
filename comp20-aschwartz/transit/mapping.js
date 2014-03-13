@@ -69,9 +69,9 @@ function displayLine () {
 			parsed = JSON.parse(orange);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			marker = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
-			marker.setMap(map);
-			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
+			markers[i] = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			markers[i].setMap(map);
+			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, markers[i]);});
 		}
 		var orangePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FFA500', strokeOpacity: 1.0, strokeWeight: 2});
         orangePath.setMap(map);
@@ -82,9 +82,9 @@ function displayLine () {
 			parsed = JSON.parse(red);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			marker = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
-			marker.setMap(map);
-			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
+			markers[i] = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			markers[i].setMap(map);
+			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(markers[i].title); infowindow.open(map, markers[i]);});
 		}
 		var redPath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 2});
         redPath.setMap(map);
@@ -95,9 +95,9 @@ function displayLine () {
 			parsed = JSON.parse(blue);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			marker = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
-			marker.setMap(map);
-			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
+			markers[i] = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			markers[i].setMap(map);
+			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, markers[i]);});
 		}
 		var bluePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 2});
         bluePath.setMap(map);
@@ -107,7 +107,5 @@ function displayLine () {
 		console.log("Ahhhhhhhhh bad data");
 	}
 }
-
-
 
 
