@@ -26,7 +26,7 @@ function getMyLocation() {
 		alert("Geolocation is not supported by your web browser.  What a shame!");
 	}
 }
-/*
+
 function renderMap() {
 	me = new google.maps.LatLng(myLat, myLng);
 	map.panTo(me);
@@ -35,7 +35,7 @@ function renderMap() {
 	title: "I am here at " + myLat + ", " + myLng + ""});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
-} */
+}
 
 function loadRodeo() {
 	var request = new XMLHttpRequest();
