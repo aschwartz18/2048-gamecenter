@@ -103,7 +103,7 @@ function displayLine () {
 		tstop = new google.maps.Marker({position: pt, icon: marker});		
 		tstop.setMap(map);
 		cont = findSchedule(station);										// new
-		ptinfowindow = new google.maps.InfoWindow({content: cont});			// moved from above
+//		ptinfowindow = new google.maps.InfoWindow({content: cont});			// moved from above
 		google.maps.event.addListener(tstop, 'click', function() {ptinfowindow.setContent(cont); ptinfowindow.open(map, this);});		//changed to cont
 			// he returns marker
 			// made ptinfowindow global
