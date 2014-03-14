@@ -115,7 +115,7 @@ function displayLine () {
 
 function findClosest() {
 	var closestID = "There is no nearby T stop";
-	var closestDistance = 9999;
+	var closestDistance = 99999999;
 	var R = 6371;
 	for (i = 0; i < numStations; i++) {
 		var dLat = toRad(parsed[i]['lat']-myLat);
@@ -124,7 +124,7 @@ function findClosest() {
                 Math.cos(toRad(myLat)) * Math.cos(toRad(parsed[i]['lat'])) * 
                 Math.sin(dLng/2) * Math.sin(dLng/2);  
 		var c = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))); 
-		if (c > closestDistance) {
+		if (c < closestDistance) {
 			closestDistance = c;
 			closestID = parsed[i]['id'];
 		}
