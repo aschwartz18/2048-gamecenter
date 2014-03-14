@@ -54,7 +54,6 @@ function loadRodeo() {
             displayLine();
         }
         if (request.readyState == 4 && request.status == 500) {
-        	console.log('Error: So much fail');
         	marker = new google.maps.Marker({position: me, title: "I am here at " + myLat + ", " + myLng + ", and I have no stations to display"});
 			marker.setMap(map);
 			google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
@@ -111,7 +110,6 @@ function makeMarker(pt, station) {
 	google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, this);});
 	return tstop;
 }
-
 
 function findClosest() {
 	var closestID = "There is no nearby T stop";
