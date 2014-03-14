@@ -78,7 +78,7 @@ function displayLine () {
         orangePath.setMap(map);
 	}
 
-   if (rodeoData['line'] == "red") {
+   else if (rodeoData['line'] == "red") {
    		numStations = 22;
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(red);
@@ -92,7 +92,7 @@ function displayLine () {
         redPath.setMap(map);
 	}
 
-    if (rodeoData['line'] == "blue") {
+    else if (rodeoData['line'] == "blue") {
     	numStations = 12;
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(blue);
