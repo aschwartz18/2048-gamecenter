@@ -122,7 +122,6 @@ function displayLine () {
 	findSchedule('Davis');
 }
 
-
 function findClosest() {
 	var closestID = "There is no nearby T stop";
 	var closestDistance = 99999999;
@@ -144,10 +143,14 @@ function findClosest() {
 	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
 }
 
-
 function toRad(x) {
 	return (x * Math.PI / 180);
 }
+
+
+
+
+
 
 
 
@@ -167,13 +170,15 @@ function findSchedule(stationName) {
 	console.log(rodeoData['line']);
 	console.log(destination['TripID']);
 	console.log(destination['Destination']);
-	console.log(s['Seconds']);
+	console.log(secs2Min(s['Seconds']));
 }
 
-
-
-
-
+function secs2Min(secs) {
+    var minutes = Math.floor(secs / 60);
+    var seconds = secs - (minutes * 60);
+    var time = minutes+':'+seconds;
+    return time;
+}
 
 
 
