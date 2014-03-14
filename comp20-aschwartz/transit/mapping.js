@@ -86,7 +86,7 @@ function displayLine () {
     	parsed = JSON.parse(red);
     	color = '#FF0000';
     }
-    ptinfowindow = new google.maps.InfoWindow({content: "holding..."});			// new
+
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
 	//	var schedData = findSchedule(station);
@@ -102,8 +102,9 @@ function displayLine () {
 							
 		tstop = new google.maps.Marker({position: pt, icon: marker});		
 		tstop.setMap(map);
-		console.log(station);
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, this);});
+		cont = findSchedule(station);										// new
+		ptinfowindow = new google.maps.InfoWindow({content: cont});			// moved from above
+		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(cont); infowindow.open(map, this);});		//changed to cont
 			// he returns marker
 			// made ptinfowindow global
 //--------------------------------------------------------------------------------------------------------------
@@ -157,7 +158,6 @@ function findSchedule(stationName) {
 			}
 		}
 	}
-	console.log(infoTable);
 	return infoTable;
 }
 
