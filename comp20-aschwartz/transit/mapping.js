@@ -89,7 +89,7 @@ function displayLine () {
     ptinfowindow = new google.maps.InfoWindow({content: "holding..."});			// new
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
-		var schedData = findSchedule(station);
+	//	var schedData = findSchedule(station);
 		pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 		if ((rodeoData['line'] == "blue") || (rodeoData['line'] == "orange") || ((rodeoData['line'] == "red") && (i < 18))) {
 			lineCoordinates.push(pt);
@@ -103,7 +103,7 @@ function displayLine () {
 		tstop = new google.maps.Marker({position: pt, icon: marker});		
 		tstop.setMap(map);
 		console.log(station);
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(schedData); infowindow.open(map, this);});
+		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, this);});
 			// he returns marker
 			// made ptinfowindow global
 //--------------------------------------------------------------------------------------------------------------
