@@ -119,11 +119,6 @@ function displayLine () {
 		var bluePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 4});
         bluePath.setMap(map);
 	}
-
-	else {
-		console.log("Error! Bad data");
-		numStations = 0;
-	}
 	findClosest();
 }
 
