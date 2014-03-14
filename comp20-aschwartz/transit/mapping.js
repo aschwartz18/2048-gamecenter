@@ -173,7 +173,12 @@ function findSchedule(stationName) {
 function secs2Min(secs) {
     var minutes = Math.floor(secs / 60);
     var seconds = secs - (minutes * 60);
-    var time = minutes+':'+seconds;
+   	if (seconds < 10) {
+   		var time = minutes+':'+'0'+seconds;
+   	}
+   	else {
+    	var time = minutes+':'+seconds;
+    }
     return time;
 }
 
