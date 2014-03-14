@@ -101,6 +101,7 @@ function displayLine () {
 							
 		tstop = new google.maps.Marker({position: pt, icon: marker});		
 		tstop.setMap(map);
+		console.log(station);
 		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, this);});
 			// he returns marker
 			// made ptinfowindow global
