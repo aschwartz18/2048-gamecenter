@@ -11,7 +11,6 @@ var rodeoData;
 var lineCoordinates = [];
 var numStations = 0;
 var parsed;
-
 			
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
