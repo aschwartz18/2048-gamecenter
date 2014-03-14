@@ -96,7 +96,7 @@ function displayLine () {
 		tstop.setMap(map);
 		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 	}
-	if (rodeoData['line'] == "red")) {
+	if (rodeoData['line'] == "red") {
         var path2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
         path2.setMap(map);
 	}
