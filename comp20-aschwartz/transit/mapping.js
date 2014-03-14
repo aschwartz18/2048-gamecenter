@@ -116,7 +116,7 @@ function displayLine () {
 function findClosest() {
 	var closestID = "There is no nearby T stop";
 	var closestDistance = 99999999;
-	var R = 6371;
+	var R = 3959;
 	for (i = 0; i < numStations; i++) {
 		var dLat = toRad(parsed[i]['lat'] - myLat);
 		var dLng = toRad(parsed[i]['lng'] - myLng);
@@ -129,8 +129,6 @@ function findClosest() {
 			closestID = parsed[i]['id'];
 		}
 	}
-	closestDistance = closestDistance * 0.6214;
-	console.log("The closest T station is " + closestID);
 	marker = new google.maps.Marker({position: me, title: "I am here at " + myLat + ", " + myLng + ". My closest station is " + closestID + ", which is " + closestDistance + " miles away."});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
@@ -140,4 +138,39 @@ function findClosest() {
 function toRad(x) {
 	return (x * Math.PI / 180);
 }
+
+
+
+
+function findSchedule(parsed[i]['id']) {
+	var infoTable = 'parsed[i]['id']</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>'
+	for (i = 0; i < data[“schedule”].length; i++){
+		destination = data[“schedule”][i];
+		stops = destination[“Predictions”];
+	 	for (j = 0; i < stops.length; j++){
+			s = stops[j];
+			if (s == stop_of_interest){
+				infoTable += '<tr><td>' + rodeoData['line'] + '</td><td>' + rodeoData["schedule"][i]["TripID"] + '</td><td>' + rodeoData["schedule"][i]this['direction'] + '</td><td>' + this['time_remaining'] + '</td></tr>';
+				console.log(s[“Seconds”]);
+				console.log(destination[“Destination”]);
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
