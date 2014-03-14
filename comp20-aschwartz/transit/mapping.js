@@ -64,6 +64,7 @@ function loadRodeo() {
     request.send()
 }
 
+
 function displayLine () {
 	var color;
 	var lineCoordinates2 = [];
