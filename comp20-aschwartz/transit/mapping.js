@@ -170,6 +170,7 @@ function findSchedule(stationName) {
 	console.log(rodeoData['line']);
 	console.log(destination['TripID']);
 	console.log(destination['Destination']);
+	console.log(s['Seconds']);
 	console.log(secs2Min(s['Seconds']));
 }
 
