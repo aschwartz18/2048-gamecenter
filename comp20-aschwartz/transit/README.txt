@@ -9,12 +9,13 @@ Date modified: March 14, 2014
 	- Program uses colored polylines to connect T stations
 	- Red line polylines fork correctly
 	- Program finds current location, prints lat and long and distance to nearest T station
-	- Program displays 500 error message in console when rodeo.json displays error
+	- Program displays 500 and error message in console when rodeo.json displays error
+	- Station markers don't show station name or schedule
 
    Pieces that have yet to be implemented:
-   	- Station markers don't show station name or schedule
+   	- Everything has been implemented.
 
 2. I discussed the assignment with a Comp20 TA.
 
-3. I spent approximately 8 hours completing the assignment.
+3. I spent approximately 16 hours completing the assignment.
 
