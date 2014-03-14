@@ -73,12 +73,12 @@ function displayLine () {
 
     if (rodeoData['line'] == "orange") {
     	parsed = JSON.parse(orange);
-    	var color = '#FFA500';
+    	color = '#FFA500';
     }
 
     if (rodeoData['line'] == "blue") {
     	parsed = JSON.parse(blue);
-    	var color = '#OOOOFF';
+    	color = '#OOOOFF';
     }
 
     if ((rodeoData['line'] == "blue") || (rodeoData['line'] == "orange")) {
