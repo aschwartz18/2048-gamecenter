@@ -18,6 +18,24 @@ table {
 	border: 1;
 }
 
+#schedule {
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#schedule tr th, td {
+	border-right-color: black;
+	border-bottom-color: black;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	text-align: left;
+}
+
 #bold {
 	font-weight: bold;
 }
