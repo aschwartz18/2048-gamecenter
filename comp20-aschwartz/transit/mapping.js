@@ -90,13 +90,12 @@ function displayLine () {
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
-		var path = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
-        path.setMap(map);
     }
 
    else if (rodeoData['line'] == "red") {
    		var lineCoordinates2 = [];
    		parsed = JSON.parse(red);
+   		color = '#FF0000';
 		for (i = 0; i < parsed.length; i++) {
 			var station = parsed[i]['id'];
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
@@ -110,11 +109,11 @@ function displayLine () {
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
-		var redPath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
-        redPath.setMap(map);
-        var redPath2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
-        redPath2.setMap(map);
+        var path2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
+        path2.setMap(map);
 	}
+	var path = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
+    path.setMap(map);
 	findClosest();
 }
 
