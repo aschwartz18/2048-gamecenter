@@ -11,7 +11,6 @@ var rodeoData;
 var lineCoordinates = [];
 var numStations = 0;
 var parsed;
-var ptinfowindow = null;		// new
 
 			
 function init() {
@@ -89,7 +88,6 @@ function displayLine () {
 
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
-	//	var schedData = findSchedule(station);
 		pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 		if ((rodeoData['line'] == "blue") || (rodeoData['line'] == "orange") || ((rodeoData['line'] == "red") && (i < 18))) {
 			lineCoordinates.push(pt);
@@ -101,12 +99,8 @@ function displayLine () {
 //--------------------------------------------------------------------------------------------------------------
 							
 		tstop = new google.maps.Marker({position: pt, icon: marker});		
-		tstop.setMap(map);
-		cont = findSchedule(station);										// new
-//		ptinfowindow = new google.maps.InfoWindow({content: cont});			// moved from above
-		google.maps.event.addListener(tstop, 'click', function() {ptinfowindow.setContent(cont); ptinfowindow.open(map, this);});		//changed to cont
-			// he returns marker
-			// made ptinfowindow global
+		tstop.setMap(map);								
+		google.maps.event.addListener(tstop, 'click', function() {ptinfowindow.setContent(findSchedule(station); ptinfowindow.open(map, this);});		
 //--------------------------------------------------------------------------------------------------------------
 
 
