@@ -156,6 +156,7 @@ function findSchedule(stationName) {
 			}
 		}
 	}
+	console.log(infoTable);
 	return infoTable;
 }
 
