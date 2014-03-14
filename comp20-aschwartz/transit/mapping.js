@@ -65,7 +65,6 @@ function loadRodeo() {
 }
 
 function displayLine () {
-	var marker = "marker.png";
 	var color;
 	var lineCoordinates2 = [];
     orange = '[{"id":"Oak Grove", "lat":42.43668, "lng":-71.071097},{"id":"Malden Center", "lat":42.426632, "lng":-71.07411},{"id":"Wellington", "lat":42.40237, "lng":-71.077082},{"id":"Sullivan", "lat":42.383975, "lng":-71.076994},{"id":"Community College", "lat":42.373622, "lng":-71.069533},{"id":"North Station", "lat":42.365577, "lng":-71.06129},{"id":"Haymarket", "lat":42.363021, "lng":-71.05829},{"id":"State Street", "lat":42.358978, "lng":-71.057598},{"id":"Downtown Crossing", "lat":42.355518, "lng":-71.060225},{"id":"Chinatown", "lat":42.352547, "lng":-71.062752},{"id":"Tufts Medical", "lat":42.349662, "lng":-71.063917},{"id":"Back Bay", "lat":42.34735, "lng":-71.075727},{"id":"Mass Ave", "lat":42.341512, "lng":-71.083423},{"id":"Ruggles", "lat":42.336377, "lng":-71.088961},{"id":"Roxbury Crossing", "lat":42.331397, "lng":-71.095451},{"id":"Jackson Square", "lat":42.323132, "lng":-71.099592},{"id":"Stony Brook", "lat":42.317062, "lng":-71.104248},{"id":"Green Street", "lat":42.310525, "lng":-71.107414},{"id":"Forest Hills", "lat":42.300523, "lng":-71.113686}]';
@@ -94,11 +93,8 @@ function displayLine () {
 		if ((i == 12) || (i > 17)) {
 			lineCoordinates2.push(pt);
 		}
+		makeMarker(station, pt);
 
-		var schedTable = findSchedule(station);
-		var ptinfowindow = new google.maps.InfoWindow({content: schedTable});
-		var tstop = new google.maps.Marker({position: pt, map: map, title: station});
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.open(map, tstop)});
 
 		//tstop = new google.maps.Marker({position: pt, icon: marker});
 		//tstop.setMap(map);
@@ -107,6 +103,7 @@ function displayLine () {
 
 	}
 
+	google.maps.event.addDomListener(window, 'load', initialize);
 
 	if (rodeoData['line'] == "red") {
         var path2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
@@ -115,6 +112,15 @@ function displayLine () {
 	var path = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
     path.setMap(map);
 	findClosest();
+}
+
+
+function makeMarker(station, pt) {
+	var marker = "marker.png";
+	var schedTable = findSchedule(station);
+	var ptinfowindow = new google.maps.InfoWindow({content: schedTable});
+	var tstop = new google.maps.Marker({position: pt, map: map, title: station, icon: marker});
+	google.maps.event.addListener(tstop, 'click', function() {infowindow.open(map, tstop)});
 }
 
 function findClosest() {
