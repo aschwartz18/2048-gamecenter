@@ -9,6 +9,8 @@ var infowindow = new google.maps.InfoWindow();
 var markers = [];
 var rodeoData;
 var lineCoordinates = [];
+var numStations;
+var parsed;
 			
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -63,7 +65,8 @@ function displayLine () {
     blue = '[{"id":"Bowdoin", "lat":42.361365, "lng":-71.062037},{"id":"Government Center", "lat":42.359705, "lng":-71.059215},{"id":"State Street", "lat":42.358978, "lng":-71.057598},{"id":"Aquarium", "lat":42.359784, "lng":-71.051652},{"id":"Maverick", "lat":42.36911856, "lng":-71.03952958},{"id":"Airport", "lat":42.374262, "lng":-71.030395},{"id":"Wood Island", "lat":42.3796403, "lng":-71.02286539},{"id":"Orient Heights", "lat":42.386867, "lng":-71.004736},{"id":"Suffolk Downs", "lat":42.39050067, "lng":-70.99712259},{"id":"Beachmont", "lat":42.39754234, "lng":-70.99231944},{"id":"Revere Beach", "lat":42.40784254, "lng":-70.99253321},{"id":"Wonderland", "lat":42.41342, "lng":-70.991648}]';
 
     if (rodeoData['line'] == "orange") {
-		for (i = 0; i < 19; i++) {
+    	numStations = 19;
+		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(orange);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
@@ -76,7 +79,8 @@ function displayLine () {
 	}
 
    if (rodeoData['line'] == "red") {
-		for (i = 0; i < 22; i++) {
+   		numStations = 22;
+		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(red);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
@@ -89,7 +93,8 @@ function displayLine () {
 	}
 
     if (rodeoData['line'] == "blue") {
-		for (i = 0; i < 12; i++) {
+    	numStations = 12;
+		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(blue);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
@@ -102,8 +107,32 @@ function displayLine () {
 	}
 
 	else {
-		console.log("Ahhhhhhhhh bad data");
+		console.log("Error! Bad data");
 	}
+	findClosest();
 }
 
+function findClosest() {
+	var closestID;
+	var closestDistance = 9999;
+	var R = 6371;
+	for (int i = 0; i < numStations; i++) {
+		var dLat = toRad(parsed[i]['lat']-myLat);
+		var dLng = toRad(parsed[i]['lng']-myLng);
+		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(toRad(myLat)) * Math.cos(toRad(parsed[i]['lat'])) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);  
+		var c = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))); 
+		if (c < closestDistance) {
+			closestDistance = c;
+			closestID = parsed[i]['id'];
+		}
+	}
+	console.log("The closest T station is " + closestID);
+}
+
+
+function toRad(x) {
+	return x * Math.PI / 180;
+}
 
