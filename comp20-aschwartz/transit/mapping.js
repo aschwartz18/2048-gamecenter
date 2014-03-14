@@ -99,7 +99,7 @@ function displayLine () {
 							
 		tstop = new google.maps.Marker({position: pt, icon: marker});		
 		tstop.setMap(map);
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.open(map, tstop);});
+		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 			// he returns marker
 			// made ptinfowindow global
 //--------------------------------------------------------------------------------------------------------------
