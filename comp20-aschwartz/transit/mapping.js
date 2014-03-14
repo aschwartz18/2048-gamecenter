@@ -141,7 +141,7 @@ function toRad(x) {
 
 
 
-
+/*
 function findSchedule(parsed[i]['id']) {
 	var infoTable = 'parsed[i]['id']</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>'
 	for (i = 0; i < data[“schedule”].length; i++){
@@ -157,6 +157,7 @@ function findSchedule(parsed[i]['id']) {
 		}
 	}
 }
+*/
 
 
 
