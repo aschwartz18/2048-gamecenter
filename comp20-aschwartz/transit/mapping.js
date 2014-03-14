@@ -127,6 +127,7 @@ function findClosest() {
 		if (c < closestDistance) {
 			closestDistance = c;
 			closestID = parsed[i]['id'];
+			console.log("The closest T station is " + closestID);
 		}
 	}
 	console.log("The closest T station is " + closestID);
