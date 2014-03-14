@@ -70,7 +70,7 @@ function displayLine () {
 			parsed = JSON.parse(orange);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: findSchedule(parsed[i]['id']), icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
@@ -90,7 +90,7 @@ function displayLine () {
 			if ((i == 12) || (i > 17)) {
 				lineCoordinates2.push(pt);
 			}
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: findSchedule(parsed[i]['id']), icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
@@ -106,7 +106,7 @@ function displayLine () {
 			parsed = JSON.parse(blue);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: findSchedule(parsed[i]['id']), icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
@@ -119,7 +119,6 @@ function displayLine () {
 		numStations = 0;
 	}
 	findClosest();
-	findSchedule('Davis');
 }
 
 function findClosest() {
@@ -163,15 +162,11 @@ function findSchedule(stationName) {
 		for(j = 0; j < stops.length; j++){
 			s = stops[j];
 			if (s['Stop'] == stationName) {
-				infoTable += '<tr><td>' + rodeoData['line'] + '</td><td>' + destination['TripID'] + '</td><td>' + destination['Destination'] + '</td><td>' + s['Seconds'] + '</td></tr>';
+				infoTable += '<tr><td>' + rodeoData['line'] + '</td><td>' + destination['TripID'] + '</td><td>' + destination['Destination'] + '</td><td>' + secs2Min(s['Seconds']) + '</td></tr>';
 			}
 		}
 	}
-	console.log(rodeoData['line']);
-	console.log(destination['TripID']);
-	console.log(destination['Destination']);
-	console.log(s['Seconds']);
-	console.log(secs2Min(s['Seconds']));
+	return infoTable;
 }
 
 function secs2Min(secs) {
