@@ -122,7 +122,7 @@ function findClosest() {
 		var dLng = toRad(parsed[i]['lng']-myLng);
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
                 Math.cos(toRad(myLat)) * Math.cos(toRad(parsed[i]['lat'])) * 
-                Math.sin(dLon/2) * Math.sin(dLon/2);  
+                Math.sin(dLng/2) * Math.sin(dLng/2);  
 		var c = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))); 
 		if (c < closestDistance) {
 			closestDistance = c;
