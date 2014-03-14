@@ -61,7 +61,7 @@ function loadRodeo() {
     	}
     }
     request.open("GET", data_file, true);
-    request.send();
+    request.send()
 }
 
 function displayLine () {
@@ -75,14 +75,11 @@ function displayLine () {
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(orange);
 			var station = parsed[i]['id'];
-			console.log(parsed[i]['id']);		// take this out later
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, icon: marker});	// took out title
-			tstop.setMap(map);
+			tstop = new google.maps.Marker({position: pt, icon: marker});
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.close(); infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
-														// added infowindow.close()
-
+			tstop.setMap(map);	// was before addListener before
 		}
 		var orangePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FFA500', strokeOpacity: 1.0, strokeWeight: 4});
         orangePath.setMap(map);
@@ -101,7 +98,7 @@ function displayLine () {
 			if ((i == 12) || (i > 17)) {
 				lineCoordinates2.push(pt);
 			}
-			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
+			tstop = new google.maps.Marker({position: pt, icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
@@ -118,7 +115,7 @@ function displayLine () {
 			var station = parsed[i]['id'];
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
+			tstop = new google.maps.Marker({position: pt, icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
