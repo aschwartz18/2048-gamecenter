@@ -11,6 +11,7 @@ var rodeoData;
 var lineCoordinates = [];
 var numStations = 0;
 var parsed;
+var ptinfowindow = null;		// new
 
 			
 function init() {
@@ -85,6 +86,7 @@ function displayLine () {
     	parsed = JSON.parse(red);
     	color = '#FF0000';
     }
+    ptinfowindow = new google.maps.Infowindow({content: "holding..."});			// new
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
 		pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
