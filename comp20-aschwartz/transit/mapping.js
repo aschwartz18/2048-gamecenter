@@ -78,6 +78,7 @@ function displayLine () {
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
 			tstop = new google.maps.Marker({position: pt, icon: marker});
+			var infowindow = new google.maps.InfoWindow();
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.close(); infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 			tstop.setMap(map);	// was before addListener before
 		}
