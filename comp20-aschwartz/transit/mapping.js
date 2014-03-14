@@ -70,9 +70,9 @@ function displayLine () {
 			parsed = JSON.parse(orange);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: findSchedule(parsed[i]['id']), icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
 			tstop.setMap(map);
-			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
+			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
 		}
 		var orangePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FFA500', strokeOpacity: 1.0, strokeWeight: 4});
         orangePath.setMap(map);
@@ -90,9 +90,9 @@ function displayLine () {
 			if ((i == 12) || (i > 17)) {
 				lineCoordinates2.push(pt);
 			}
-			tstop = new google.maps.Marker({position: pt, title: findSchedule(parsed[i]['id']), icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
 			tstop.setMap(map);
-			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
+			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
 		}
 		var redPath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
         redPath.setMap(map);
@@ -106,9 +106,9 @@ function displayLine () {
 			parsed = JSON.parse(blue);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: findSchedule(parsed[i]['id']), icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
 			tstop.setMap(map);
-			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
+			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
 		}
 		var bluePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 4});
         bluePath.setMap(map);
@@ -145,14 +145,6 @@ function findClosest() {
 function toRad(x) {
 	return (x * Math.PI / 180);
 }
-
-
-
-
-
-
-
-
 
 function findSchedule(stationName) {
 	var infoTable = stationName;
