@@ -83,6 +83,8 @@ function displayLine () {
     	parsed = JSON.parse(red);
     	color = '#FF0000';
     }
+
+
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
 		pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
@@ -92,10 +94,20 @@ function displayLine () {
 		if ((i == 12) || (i > 17)) {
 			lineCoordinates2.push(pt);
 		}
-		tstop = new google.maps.Marker({position: pt, icon: marker});
-		tstop.setMap(map);
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
+
+		var schedTable = findSchedule(station);
+		var ptinfowindow = new google.maps.InfoWindow({content: schedTable});
+		var tstop = new google.maps.Marker({position: pt, map: map, title: station});
+		google.maps.event.addListener(tstop, 'click', function() {infowindow.open(map, tstop)});
+
+		//tstop = new google.maps.Marker({position: pt, icon: marker});
+		//tstop.setMap(map);
+		//google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
+
+
 	}
+
+
 	if (rodeoData['line'] == "red") {
         var path2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
         path2.setMap(map);
