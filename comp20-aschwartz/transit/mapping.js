@@ -11,6 +11,7 @@ var rodeoData;
 var lineCoordinates = [];
 var numStations = 0;
 var parsed;
+
 			
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -95,12 +96,12 @@ function displayLine () {
 		}
 
 //--------------------------------------------------------------------------------------------------------------
-		var cont = findSchedule(station);										// new
-		var tstop = new google.maps.Marker({position: pt, icon: marker});		// added var
+							
+		tstop = new google.maps.Marker({position: pt, icon: marker});		
 		tstop.setMap(map);
-		var ptinfowindow = new google.maps.InfoWindow({content: cont});			// new
-		google.maps.event.addListener(tstop, 'click', function() {ptinfowindow.open(map, tstop);});
+		google.maps.event.addListener(tstop, 'click', function() {infowindow.open(map, tstop);});
 			// he returns marker
+			// made ptinfowindow global
 //--------------------------------------------------------------------------------------------------------------
 
 
