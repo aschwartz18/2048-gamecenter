@@ -155,12 +155,12 @@ function toRad(x) {
 function findSchedule(stationName) {
 	var infoTable = 'stationName</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>';
 	for(i = 0; i < rodeoData['schedule'].length; i++){
-		destination = rodeoData[“schedule”][i];
-		stops = destination[“Predictions”];
-	 	for (j = 0; i < stops.length; j++){
+		destination = rodeoData['schedule'][i];
+		stops = destination['Predictions'];
+		for(j = 0; j < stops.length; j++){
 			s = stops[j];
-			if (s['Stop'] == stationName){
-				infoTable +='<tr><td>' + rodeoData['line'] + '</td><td>' + destination['TripID'] + '</td><td>' + destination['Destination'] + '</td><td>' + s['Seconds'] + '</td></tr>';
+			if (s['Stop'] == stationName) {
+				infoTable += '<tr><td>' + rodeoData['line'] + '</td><td>' + destination['TripID'] + '</td><td>' + destination['Destination'] + '</td><td>' + s['Seconds'] + '</td></tr>';
 			}
 		}
 	}
