@@ -68,11 +68,12 @@ function displayLine () {
     	numStations = 19;
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(orange);
+			var station = parsed[i]['id'];
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
 			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
 			tstop.setMap(map);
-			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
+			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
 		var orangePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FFA500', strokeOpacity: 1.0, strokeWeight: 4});
         orangePath.setMap(map);
@@ -83,6 +84,7 @@ function displayLine () {
    		numStations = 22;
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(red);
+			var station = parsed[i]['id'];
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			if (i < 18) {
 				lineCoordinates.push(pt);
@@ -92,7 +94,7 @@ function displayLine () {
 			}
 			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
 			tstop.setMap(map);
-			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
+			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
 		var redPath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
         redPath.setMap(map);
@@ -104,11 +106,12 @@ function displayLine () {
     	numStations = 12;
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(blue);
+			var station = parsed[i]['id'];
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
 			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
 			tstop.setMap(map);
-			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
+			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 		}
 		var bluePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#0000FF', strokeOpacity: 1.0, strokeWeight: 4});
         bluePath.setMap(map);
