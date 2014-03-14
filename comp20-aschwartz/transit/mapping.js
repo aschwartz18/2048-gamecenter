@@ -116,10 +116,13 @@ function displayLine () {
 
 
 function makeMarker(station, pt) {
+	console.log(station);
+	console.log(pt);
 	var marker = "marker.png";
 	var schedTable = findSchedule(station);
 	var ptinfowindow = new google.maps.InfoWindow({content: schedTable});
 	var tstop = new google.maps.Marker({position: pt, map: map, title: station, icon: marker});
+	tstop.setMap(map);
 	google.maps.event.addListener(tstop, 'click', function() {infowindow.open(map, tstop)});
 }
 
