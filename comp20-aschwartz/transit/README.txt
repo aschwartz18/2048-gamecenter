@@ -7,12 +7,12 @@ Date modified: March 14, 2014
 	- Program renders Google Maps
 	- Program uses unique markers to print T stations of correct line to map
 	- Program uses colored polylines to connect T stations
+	- Red line polylines fork correctly
 	- Program finds current location, prints lat and long and distance to nearest T station
+	- Program displays 500 error message in console when rodeo.json displays error
 
    Pieces that have yet to be implemented:
    	- Station markers don't show station name or schedule
-   	- Program displays 500 error message in console when rodeo.json displays error
-   	- Polylines in red line don't fork correctly
 
 2. I discussed the assignment with a Comp20 TA.
 
