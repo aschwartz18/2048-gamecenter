@@ -142,7 +142,7 @@ function findClosest() {
 			closestID = parsed[i]['id'];
 		}
 	}
-	marker = new google.maps.Marker({position: me, title: "I am here at " + myLat + ", " + myLng + ". My closest station is " + closestID + ", which is " + closestDistance + " miles away."});
+	marker = new google.maps.Marker({position: me, title: '<h2>' + "I am here at " + myLat + ", " + myLng + "." + '</h2>' + "My closest station is " + '<div id="bold>'+ closestID + '</div>' + ", which is " + closestDistance + " miles away."});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
 }
@@ -152,7 +152,7 @@ function toRad(x) {
 }
 
 function findSchedule(stationName) {
-	var infoTable = stationName;
+	var infoTable = '<h3>' + stationName + '</h3>';
 	infoTable += '</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>';
 	for(i = 0; i < rodeoData['schedule'].length; i++){
 		destination = rodeoData['schedule'][i];
@@ -183,16 +183,4 @@ function secs2Min(secs) {
  	var time = hours+':'+minutes+':'+seconds;
     return time;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
