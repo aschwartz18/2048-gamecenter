@@ -9,7 +9,7 @@ var infowindow = new google.maps.InfoWindow();
 var markers = [];
 var rodeoData;
 var lineCoordinates = [];
-var numStations;
+var numStations = 0;
 var parsed;
 			
 function init() {
