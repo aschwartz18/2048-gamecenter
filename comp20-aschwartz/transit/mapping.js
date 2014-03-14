@@ -129,7 +129,11 @@ function findClosest() {
 			closestID = parsed[i]['id'];
 		}
 	}
+	closestDistance = closestDistance * 0.6214;
 	console.log("The closest T station is " + closestID);
+	marker = new google.maps.Marker({position: me, title: "I am here at " + myLat + ", " + myLng + ". My closest station is " + closestID + ", which is " + closestDistance + " miles away."});
+	marker.setMap(map);
+	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
 }
 
 
