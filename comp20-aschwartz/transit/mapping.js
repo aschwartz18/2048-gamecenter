@@ -15,7 +15,6 @@ var parsed;
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	getMyLocation();
-	loadRodeo();
 }
 			
 function getMyLocation() {
@@ -37,6 +36,7 @@ function renderMap() {
 	marker = new google.maps.Marker({position: me, title: "I am here at " + myLat + ", " + myLng + ""});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(marker.title); infowindow.open(map, marker);});
+	loadRodeo();
 }
 
 function loadRodeo() {
