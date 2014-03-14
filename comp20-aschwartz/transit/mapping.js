@@ -124,7 +124,7 @@ function findClosest() {
                 Math.cos(toRad(myLat)) * Math.cos(toRad(parsed[i]['lat'])) * 
                 Math.sin(dLng/2) * Math.sin(dLng/2);  
 		var c = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))); 
-		console.log(parser[i]['id' + " is " c "km away"]);
+		console.log(parser[i]['id'] + " is " c "km away");
 		if (c < closestDistance) {
 			closestDistance = c;
 			closestID = parsed[i]['id'];
