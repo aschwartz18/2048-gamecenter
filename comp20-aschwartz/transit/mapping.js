@@ -79,17 +79,25 @@ function displayLine () {
 	}
 
    else if (rodeoData['line'] == "red") {
+   		var lineCoordinates2 = [];
    		numStations = 22;
 		for (i = 0; i < numStations; i++) {
 			parsed = JSON.parse(red);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
-			lineCoordinates.push(pt);
+			if (i < 18) {
+				lineCoordinates.push(pt);
+			}
+			if ((i == 12) || (i > 17)) {
+				lineCoordinates2.push(pt);
+			}
 			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
 		var redPath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
         redPath.setMap(map);
+        var redPath2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: '#FF0000', strokeOpacity: 1.0, strokeWeight: 4});
+        redPath2.setMap(map);
 	}
 
     else if (rodeoData['line'] == "blue") {
@@ -112,6 +120,7 @@ function displayLine () {
 	}
 	findClosest();
 }
+
 
 function findClosest() {
 	var closestID = "There is no nearby T stop";
