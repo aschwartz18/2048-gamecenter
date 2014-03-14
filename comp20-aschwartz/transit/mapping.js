@@ -86,7 +86,7 @@ function displayLine () {
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
 		pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
-		if ((data == blue) || (data == orange) || (i < 18)) {
+		if ((rodeoData['line'] == "blue")) || (rodeoData['line'] == "orange")) || (i < 18)) {
 			lineCoordinates.push(pt);
 		}
 		if ((i == 12) || (i > 17)) {
@@ -96,7 +96,7 @@ function displayLine () {
 		tstop.setMap(map);
 		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
 	}
-	if (data == red) {
+	if (rodeoData['line'] == "red")) {
         var path2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
         path2.setMap(map);
 	}
