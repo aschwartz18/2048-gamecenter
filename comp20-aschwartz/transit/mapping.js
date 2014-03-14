@@ -117,7 +117,7 @@ function findClosest() {
 	var closestID = "There is no nearby T stop";
 	var closestDistance = 9999;
 	var R = 6371;
-	for (int i = 0; i < numStations; i++) {
+	for (i = 0; i < numStations; i++) {
 		var dLat = toRad(parsed[i]['lat']-myLat);
 		var dLng = toRad(parsed[i]['lng']-myLng);
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
