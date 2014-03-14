@@ -2,7 +2,7 @@ var myLat = 0;
 var myLng = 0;
 var request = new XMLHttpRequest();
 var me = new google.maps.LatLng(myLat, myLng);
-var myOptions = {zoom: 11, center: me, mapTypeId: google.maps.MapTypeId.ROADMAP};
+var myOptions = {zoom: 12, center: me, mapTypeId: google.maps.MapTypeId.ROADMAP};
 var map;
 var tstop;
 var infowindow = new google.maps.InfoWindow();
@@ -119,18 +119,14 @@ function findClosest() {
 	var R = 6371;
 	for (i = 0; i < numStations; i++) {
 		var dLat = toRad(parsed[i]['lat'] - myLat);
-		console.log( "My lat is: " + myLat);
-		console.log("Parsed lat is: " + parsed[i]['lat']);
 		var dLng = toRad(parsed[i]['lng'] - myLng);
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
                 Math.cos(toRad(myLat)) * Math.cos(toRad(parsed[i]['lat'])) * 
                 Math.sin(dLng/2) * Math.sin(dLng/2);  
 		var c = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))); 
-		console.log(parsed[i]['id'] + " is " + c + "km away");
 		if (c < closestDistance) {
 			closestDistance = c;
 			closestID = parsed[i]['id'];
-			console.log("The closest T station is " + closestID);
 		}
 	}
 	console.log("The closest T station is " + closestID);
