@@ -70,7 +70,7 @@ function displayLine () {
 			parsed = JSON.parse(orange);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
 		}
@@ -90,7 +90,7 @@ function displayLine () {
 			if ((i == 12) || (i > 17)) {
 				lineCoordinates2.push(pt);
 			}
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
 		}
@@ -106,7 +106,7 @@ function displayLine () {
 			parsed = JSON.parse(blue);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: '', icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(parsed[i]['id'])); infowindow.open(map, tstop);});
 		}
