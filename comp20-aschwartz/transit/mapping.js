@@ -108,12 +108,13 @@ function displayLine () {
 
 	else {
 		console.log("Error! Bad data");
+		numStations = 0;
 	}
 	findClosest();
 }
 
 function findClosest() {
-	var closestID;
+	var closestID = "There is no nearby T stop";
 	var closestDistance = 9999;
 	var R = 6371;
 	for (int i = 0; i < numStations; i++) {
