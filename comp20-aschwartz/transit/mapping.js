@@ -15,7 +15,6 @@ var parsed;
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	getMyLocation();
-	loadRodeo();
 }
 			
 function getMyLocation() {
@@ -29,6 +28,7 @@ function getMyLocation() {
 	else {
 		alert("Geolocation is not supported by your web browser.  What a shame!");
 	}
+	loadRodeo();
 }
 
 function renderMap() {
