@@ -86,7 +86,7 @@ function displayLine () {
 	for (i = 0; i < parsed.length; i++) {
 		var station = parsed[i]['id'];
 		pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
-		if ((rodeoData['line'] == "blue")) || (rodeoData['line'] == "orange")) || (i < 18)) {
+		if ((rodeoData['line'] == "blue") || (rodeoData['line'] == "orange") || (i < 18)) {
 			lineCoordinates.push(pt);
 		}
 		if ((i == 12) || (i > 17)) {
