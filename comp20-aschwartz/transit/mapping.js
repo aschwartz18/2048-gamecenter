@@ -119,6 +119,7 @@ function displayLine () {
 		numStations = 0;
 	}
 	findClosest();
+	findSchedule('Davis');
 }
 
 
@@ -150,23 +151,25 @@ function toRad(x) {
 
 
 
-/*
-function findSchedule(parsed[i]['id']) {
-	var infoTable = 'parsed[i]['id']</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>'
+
+function findSchedule(stationName) {
+	var infoTable = 'stationName' + </br> + <table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>;
 	for (i = 0; i < data[“schedule”].length; i++){
 		destination = data[“schedule”][i];
 		stops = destination[“Predictions”];
 	 	for (j = 0; i < stops.length; j++){
 			s = stops[j];
-			if (s == stop_of_interest){
-				infoTable += '<tr><td>' + rodeoData['line'] + '</td><td>' + rodeoData["schedule"][i]["TripID"] + '</td><td>' + rodeoData["schedule"][i]this['direction'] + '</td><td>' + this['time_remaining'] + '</td></tr>';
-				console.log(s[“Seconds”]);
-				console.log(destination[“Destination”]);
+			if (s['Stop'] == stationName){
+				infoTable += '<tr><td>' + rodeoData['line'] + '</td><td>' + destination['TripID'] + '</td><td>' + destination['Destination'] + '</td><td>' + s['Seconds'] + '</td></tr>';
 			}
 		}
 	}
+	console.log(rodeoData['line']);
+	console.log(destination['TripID']);
+	console.log(destination['Destination']);
+	console.log(s['Seconds']);
 }
-*/
+
 
 
 
