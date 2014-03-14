@@ -70,7 +70,7 @@ function displayLine () {
 			parsed = JSON.parse(orange);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: 'parsed[i]['id'] </br> <table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>', icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
@@ -84,7 +84,7 @@ function displayLine () {
 			parsed = JSON.parse(red);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: 'parsed[i]['id'] </br> <table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>', icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
@@ -98,7 +98,7 @@ function displayLine () {
 			parsed = JSON.parse(blue);
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
-			tstop = new google.maps.Marker({position: pt, title: parsed[i]['id'], icon: marker});
+			tstop = new google.maps.Marker({position: pt, title: 'parsed[i]['id'] </br> <table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>', icon: marker});
 			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(tstop.title); infowindow.open(map, tstop);});
 		}
