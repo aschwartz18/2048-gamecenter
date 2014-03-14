@@ -155,7 +155,8 @@ function toRad(x) {
 
 
 function findSchedule(stationName) {
-	var infoTable = 'stationName</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>';
+	var infoTable = stationName;
+	infoTable += '</br><table id="schedule"><tr><th>Line</th><th>Trip #</th><th>Direction</th><th>Time Remaining</th></tr>';
 	for(i = 0; i < rodeoData['schedule'].length; i++){
 		destination = rodeoData['schedule'][i];
 		stops = destination['Predictions'];
