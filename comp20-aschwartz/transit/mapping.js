@@ -53,9 +53,9 @@ function loadRodeo() {
             rodeoData = JSON.parse(request.responseText);
             displayLine();
         }
-        else if (request.status == 500) {
-        	console.log('Error: So much fail');
-        }
+    }
+    if (request.status == 500) {
+        console.log('Error: So much fail');
     }
     request.open("GET", data_file, true);
     request.send();
