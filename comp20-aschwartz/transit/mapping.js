@@ -53,6 +53,9 @@ function loadRodeo() {
             rodeoData = JSON.parse(request.responseText);
             displayLine();
         }
+        else if (request.status == 500) {
+        	console.log('Error: So much fail');
+        }
     }
     request.open("GET", data_file, true);
     request.send();
@@ -168,7 +171,10 @@ function findSchedule(stationName) {
 function secs2Min(secs) {
     var minutes = Math.floor(secs / 60);
     var seconds = secs - (minutes * 60);
-   	if (seconds < 10) {
+    if (seconds == 0) {
+    	var time = minutes+':'+'00';
+    }
+   	else if (seconds < 10) {
    		var time = minutes+':'+'0'+seconds;
    	}
    	else {
