@@ -78,9 +78,9 @@ function displayLine () {
 			pt = new google.maps.LatLng(parsed[i]['lat'], parsed[i]['lng']);
 			lineCoordinates.push(pt);
 			tstop = new google.maps.Marker({position: pt, icon: marker});
-			var infowindow = new google.maps.InfoWindow();
+			tstop.setMap(map);
 			google.maps.event.addListener(tstop, 'click', function() {infowindow.close(); infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
-			tstop.setMap(map);	// was before addListener before
+		
 		}
 		var orangePath = new google.maps.Polyline({path: lineCoordinates, geodesic: true, strokeColor: '#FFA500', strokeOpacity: 1.0, strokeWeight: 4});
         orangePath.setMap(map);
@@ -168,17 +168,19 @@ function findSchedule(stationName) {
 }
 
 function secs2Min(secs) {
-    var minutes = Math.floor(secs / 60);
-    var seconds = secs - (minutes * 60);
-    if (seconds == 0) {
-    	var time = minutes+':'+'00';
+	var hours = Math.floor(secs/3600);
+    var minutes = Math.floor((secs - (hours*3600))/ 60);
+    var seconds = secs - (minutes * 60) - (hours*3600);
+    if (hours < 10) {
+    	hours = "0"+hours;
     }
-   	else if (seconds < 10) {
-   		var time = minutes+':'+'0'+seconds;
-   	}
-   	else {
-    	var time = minutes+':'+seconds;
+    if (minutes < 10) {
+    	minutes = "0"+minutes;
     }
+    if (seconds < 10) {
+    	seconds = "0"+seconds;
+    }
+ 	var time = hours+':'+minutes+':'+seconds;
     return time;
 }
 
