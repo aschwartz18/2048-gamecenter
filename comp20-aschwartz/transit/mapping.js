@@ -104,7 +104,7 @@ function displayLine () {
 		tstop.setMap(map);
 		cont = findSchedule(station);										// new
 		ptinfowindow = new google.maps.InfoWindow({content: cont});			// moved from above
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(cont); infowindow.open(map, this);});		//changed to cont
+		google.maps.event.addListener(tstop, 'click', function() {ptinfowindow.setContent(cont); ptinfowindow.open(map, this);});		//changed to cont
 			// he returns marker
 			// made ptinfowindow global
 //--------------------------------------------------------------------------------------------------------------
