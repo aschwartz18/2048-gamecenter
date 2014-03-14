@@ -93,9 +93,17 @@ function displayLine () {
 		if ((rodeoData['line'] == "red") && ((i == 12) || (i > 17))) {
 			lineCoordinates2.push(pt);
 		}
-		tstop = new google.maps.Marker({position: pt, icon: marker});
+
+//--------------------------------------------------------------------------------------------------------------
+		var cont = findSchedule(station);										// new
+		var tstop = new google.maps.Marker({position: pt, icon: marker});		// added var
 		tstop.setMap(map);
-		google.maps.event.addListener(tstop, 'click', function() {infowindow.setContent(findSchedule(station)); infowindow.open(map, tstop);});
+		var ptinfowindow = new google.maps.InfoWindow({content: cont});			// new
+		google.maps.event.addListener(tstop, 'click', function() {ptinfowindow.open(map, tstop);});
+			// he returns marker
+//--------------------------------------------------------------------------------------------------------------
+
+
 	}
 	if (rodeoData['line'] == "red") {
         var path2 = new google.maps.Polyline({path: lineCoordinates2, geodesic: true, strokeColor: color, strokeOpacity: 1.0, strokeWeight: 4});
