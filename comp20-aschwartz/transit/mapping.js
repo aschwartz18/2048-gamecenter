@@ -113,15 +113,15 @@ function displayLine (myLat, myLng) {
 	findClosest(myLat, myLng);
 }
 
-function findClosest() {
+function findClosest(myLat, myLng) {
 	var closestID = "There is no nearby T stop";
 	var closestDistance = 99999999;
 	var R = 6371;
 	for (i = 0; i < numStations; i++) {
-		var dLat = toRad(parsed[i]['lat']-myLat);
+		var dLat = toRad(parsed[i]['lat'] - myLat);
 		console.log( "My lat is: " + myLat);
 		console.log("Parsed lat is: " + parsed[i]['lat']);
-		var dLng = toRad(parsed[i]['lng']-myLng);
+		var dLng = toRad(parsed[i]['lng'] - myLng);
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
                 Math.cos(toRad(myLat)) * Math.cos(toRad(parsed[i]['lat'])) * 
                 Math.sin(dLng/2) * Math.sin(dLng/2);  
