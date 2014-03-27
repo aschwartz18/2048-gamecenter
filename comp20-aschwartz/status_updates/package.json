@@ -1,0 +1,20 @@
+{
+  "name": "status_updates",
+  "version": "0.0.0",
+  "description": "Example heroku app",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuftsdev/comp20-aschwartz/comp20-aschwartz/status_updates/status_updates.git"
+  },
+  "keywords": [
+    "example",
+    "heroku",
+    "app"
+  ],
+  "author": "aschwartz",
+  "license": "ISC"
+}
