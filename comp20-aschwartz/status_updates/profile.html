@@ -5,6 +5,7 @@
 <head>
 <title>Fecesbook</title>
     <script>
+
     	function reload() {
     		elem = document.getElementById("results");
     		output = "";
@@ -18,8 +19,23 @@
         	var thread = document.createTextNode("");
     	    var textMsg = document.getElementById("msg").value;
     	  	var cdate = new Date();
-    	  	var update = cdate.getMonth() + "/" + cdate.getDay() + "/" + cdate.getFullYear() + " " + cdate.getHours() + ":" + cdate.getMinutes() + " - " + textMsg;
+    	  	var update = "";
 
+    	 	if (cdate.getMonth() < 10) {update = "0" + cdate.getMonth() + "/";}
+    	 	else {update = cdate.getMonth() + "/";}
+
+    	 	if (cdate.getDay() < 10) {update += "0" + cdate.getDay() + "/";}
+    	 	else {update += cdate.getDay() + "/";}
+
+    	 	update += cdate.getFullYear() + " ";
+
+    	 	if (cdate.getHours() < 10) {update += "0" + cdate.getHours() + ":";}
+    	 	else {update += cdate.getHours() + ":";}
+
+			if (cdate.getMinutes() < 10) {update += "0" + cdate.getMinutes() + " - ";}
+    	 	else {update += cdate.getMinutes() + " - ";}
+
+    	 	update += textMsg;
 
     	  	localStorage[new Date().getTime()] = update;
     	  	reload();
