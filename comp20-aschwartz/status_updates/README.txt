@@ -7,7 +7,12 @@ Date modified: February 23, 2014
 Lab 5: Running status updates
 
 profile.html
-Added <script> to header
-	contains function printMessages()
-Added onchange to textbox
-	calls function printMessages()
+	Stores messages in local storage
+	Messages displayed dynamically
+	Messages print date and time formatted correctly
+	Messages print newest to oldest
+	Messages reload when page opened again
+
+	Not working: date is wrong. Why?
+
+Part 2: heroku app
