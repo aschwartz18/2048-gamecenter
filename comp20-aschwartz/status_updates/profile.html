@@ -5,20 +5,24 @@
 <head>
 <title>Fecesbook</title>
     <script>
-        function printMessages()
-        {
-        	
+    	function reload() {
+    		elem = document.getElementById("results");
+    		output = "";
+    		for (key in localStorage) {
+    			output = output + "<p>" + localStorage[key] + "</p>\n";
+    		}
+    		elem.innerHTML = output;
+    	}
+        
+        function store() {	
         	var thread = document.createTextNode("");
     	    var textMsg = document.getElementById("msg").value;
     	  	var cdate = new Date();
-    	  	var update = cdate.getMonth() + "/" + cdate.getDay() + "/" + cdate.getFullYear() + " " + cdate.getHours() + ":" + cdate.getMinutes() + " - " + textMsg + "fghsfgs";
-            document.write(update);
-    	  	var parent = thread.parentNode;
-         
-    	  	parent.insertBefore(update, thread);
+    	  	var update = cdate.getMonth() + "/" + cdate.getDay() + "/" + cdate.getFullYear() + " " + cdate.getHours() + ":" + cdate.getMinutes() + " - " + textMsg;
 
 
-     	    document.getElementById("status").innerHTML = thread;
+    	  	localStorage[new Date().getTime()] = update;
+    	  	reload();
 
         }
 
@@ -38,11 +42,10 @@
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="printMessages()"/></h3>
+	<div id="header"></div>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" onchange="store()"/></h3>
 	<h3>Updates</h3>
-	<div id="status">
-
-	</div>
+	<div id="results"></div>
 	<div id="yesterday">
 		<h3>Updates from yesterday:</h3>
 		<ul>
