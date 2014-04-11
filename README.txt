@@ -32,11 +32,12 @@ Prof. Ming Chow
 		Added script reference to JQuery in head
 
 	Modifications to game_manager.js:
-		In the function GameManager.prototype.actuate(), inserted Ajax post request. Sample code:
+		In the function GameManager.prototype.actuate(), I first stringified the
+		board grid, and then inserted Ajax post request. Sample code:
 		    var jgrid = JSON.stringify(this.grid);
 		    $.post( "http://rocky-dawn-8148.herokuapp.com/submit.json", {
         		username: usr,
         		score: this.score,
-        		grid: this.grid,
+        		grid: jgrid,
       		});
 
